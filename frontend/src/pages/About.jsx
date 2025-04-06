@@ -10,13 +10,13 @@ const AboutMentalHealth = () => {
         <Header/>
       <div className="max-w-4xl mx-auto">
         {/* Hero Image */}
-        <div className="flex justify-center mb-8">
+        {/* <div className="flex justify-center mb-8">
           <img
             src="https://cdn.pixabay.com/photo/2018/03/10/12/00/depression-3213673_1280.jpg"
             alt="Mental Health Illustration"
             className="w-full max-w-xl rounded-xl shadow-lg"
           />
-        </div>
+        </div> */}
 
         <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">
           About Mental Health
