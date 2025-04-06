@@ -6,6 +6,8 @@ import Signup from './pages/Signup';
 import Login from './pages/login';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 export default function App() {
   return (
@@ -13,8 +15,10 @@ export default function App() {
        <Route path="/signup" element={<Signup />} />
        <Route path="/login" element={<Login />} />
        <Route path="/dashboard" element={<Dashboard />} />
-       <Route path='/home' element={<Home/>}/>
+       <Route path='/' element={<Home/>}/>
        <Route path='/quiz' element={<Quiz/>}/>
+       <Route path='/about' element={<About/>}/>
+       <Route path='/contact' element={<Contact/>}/>
     </Routes>
   );
 }

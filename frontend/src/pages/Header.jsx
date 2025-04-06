@@ -9,7 +9,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 className="text-3xl font-extrabold tracking-wide">Wellness Whisper</h1>
         <ul className="hidden md:flex space-x-8 text-lg font-medium">
-         <li><button  onClick={() => navigate("/home")}>Home</button></li>
+         <li><button  onClick={() => navigate("/")}>Home</button></li>
          <li><button  onClick={() => navigate("/about")}>About</button></li>
          <li><button  onClick={() => navigate("/quiz")}>Quiz</button></li>
          <li><button  onClick={() => navigate("/contact")}>Contact Us</button></li>

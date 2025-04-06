@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "./footer";
+import Footer from "./Footer";
 import Header from "./Header";
 import one from "../assets/3.webp";
 import two from "../assets/4.jpg";
@@ -92,7 +92,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Footer */}
+      
       <Footer />
     </div>
   );
