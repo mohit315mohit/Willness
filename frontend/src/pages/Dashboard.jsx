@@ -7,6 +7,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 flex flex-col items-center justify-center px-4 py-10">
       {/* Heading */}
+
       <motion.div
         className="text-center mb-12"
         initial={{ opacity: 0, y: -30 }}
@@ -16,7 +17,6 @@ const HomePage = () => {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800">Welcome to MindCare</h1>
         <p className="text-lg mt-3 text-gray-600">Track your mental wellness or take a quick stress quiz.</p>
       </motion.div>
-
       {/* Options */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl w-full px-4">
         {/* Login Section */}

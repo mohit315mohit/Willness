@@ -1,28 +1,71 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from 'lucide-react';
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setemail] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [password, setPassword] = useState("");
   // const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
+    // console.log(email,password);
     e.preventDefault();
-    try {
+    // try {
       const res = await axios.post(
         "http://localhost:5000/api/auth/login",
-        { username, password },
+        { email, password },
         { withCredentials: true }
       );
-      alert(res.data.msg);
-    } catch (err) {
-      alert(err.response?.data?.msg || "Login failed");
-    }
+      // console.log(res);
+      // alert(res.message);
+      navigate("/");
+    // } catch (err) {
+    //   alert(err.response?.data?.msg || "Login failedjyfjyu");
+    // }
   };
+
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  
+  //   console.log("Logging in with:", email, password);
+  
+  //   try {
+  //     const res = await fetch("http://localhost:5000/api/auth/login", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       credentials: "include",  // this is like withCredentials: true in axios
+  //       body: JSON.stringify({ email, password })
+  //     });
+  
+  //     const data = await res.json();
+  
+  //     if (res.ok) {
+  //       alert(data.message);  // success
+  //       navigate("/");
+  //     } else {
+  //       alert(data.message || "Login failed");  // handle error from server
+  //     }
+  //   } catch (err) {
+  //     console.error("Login error:", err);
+  //     alert("Something went wrong. Please try again.");
+  //   }
+  // };
+
+  // const handleLogin = async (e)=>{
+  //   e.preventDefault();
+  //   await fetch("http://localhost:5000/api/auth/login")
+  //   .then(res=>res.json())
+  //   .then(res=>console.log(res.message))
+  //   // const data = await res.json();
+  //   ;
+  // }
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center p-4">
@@ -33,13 +76,13 @@ export default function Login() {
         <form className="space-y-5" onSubmit={handleLogin}>
           <div>
             <label className="block mb-1 font-medium text-gray-700">
-              Username
+              email
             </label>
             <input
               type="text"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
               className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />

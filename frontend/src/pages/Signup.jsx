@@ -4,32 +4,35 @@ import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
 
 export default function Signup() {
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = e => {
+  // Update form fields when user types
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Validate the form fields
   const validate = () => {
-    if (!form.username || form.username.length < 3) return "Username must be at least 3 characters";
+    if (!form.name || form.name.length < 3) return "name must be at least 3 characters";
     if (!form.email.includes('@')) return "Invalid email format";
     if (form.password.length < 6) return "Password must be at least 6 characters";
     return null;
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationError = validate();
     if (validationError) return setError(validationError);
-
+    // console.log(form)
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/signup', form, {
+      await axios.post('http://localhost:5000/api/auth/register', form, {
         withCredentials: true
       });
-      alert(res.data.msg);
+      // alert(res.data.msg);
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.msg || 'Signup failed');
@@ -43,15 +46,17 @@ export default function Signup() {
 
         {error && <p className="text-red-600 mb-4 text-sm">{error}</p>}
 
+        {/* name Input */}
         <input
           type="text"
-          name="username"
-          placeholder="Username"
-          value={form.username}
+          name="name"
+          placeholder="name"
+          value={form.name}
           onChange={handleChange}
           className="w-full p-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-400"
         />
 
+        {/* Email Input */}
         <input
           type="email"
           name="email"
@@ -61,6 +66,7 @@ export default function Signup() {
           className="w-full p-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-400"
         />
 
+        {/* Password Input with Eye Toggle */}
         <div className="relative mb-4">
           <input
             type={showPass ? 'text' : 'password'}
@@ -78,33 +84,25 @@ export default function Signup() {
           </div>
         </div>
 
+        {/* Signup Button */}
         <button 
-        className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold transition duration-300">
+          className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold transition duration-300"
+        >
           Sign Up
         </button>
-        <p className="text-sm text-center text-gray-500">
-            Already have an account?{" "}
-            <button
-              type="button"
-              onClick={() => navigate("/login")}
-              className="text-indigo-600 hover:underline"
-            >
-              Login
-            </button>
-          </p>
+
+        {/* Link to Login Page */}
+        <p className="text-sm text-center text-gray-500 mt-4">
+          Already have an account?{' '}
+          <button
+            type="button"
+            onClick={() => navigate('/login')}
+            className="text-indigo-600 hover:underline"
+          >
+            Login
+          </button>
+        </p>
       </form>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
